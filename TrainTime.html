@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anytime is Train Time</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+    <Header>
+        <div class="container rounded">
+            <div class="jumbotron bg-dark text-light text-center">
+                <h1 class="display-3">Anytime is Train Time</h1>
+                <p class="lead">Choo Choo, Chee Chee</p>
+                <hr class="my-2">
+            </div>
+        </div>
+    </Header>
+    <br>
+    <Main>
+
+        <div class="container border rounded">
+            <div class="panel panel-default bg-primary text-white">Recently Filtered</div>
+            <table id="table1" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>Frequency</th>
+                        <th>Next Arrival</th>
+                        <th>Month Away</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Dev</td>
+                        <td>2018</td>
+                        <td>June</td>
+                        <td>$20</td>
+                      
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Dev</td>
+                        <td>2018</td>
+                        <td>June</td>
+                        <td>$20</td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Dev</td>
+                        <td>2018</td>
+                        <td>June</td>
+                        <td>$20</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td>Mark</td>
+                        <td>Dev</td>
+                        <td>2018</td>
+                        <td>June</td>
+                        <td>$20</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+    </Main>
+    <br>
+    <Footer>
+        <div class="container border rounded">
+            <div class="panel-heading bg-primary text-white">Recently Filtered</div>
+            <form>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Train Name</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Example input">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Destination</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">First Train (HH times-military times)</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Another input">
+                </div>
+
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Frequency</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Another input">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </Footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+    <script type="text/javascript">
+
+
+// Initialize Firebase
+// Initialize Firebase
+var config = {
+    // apiKey: "AIzaSyCryKfjsF_9YCOVCLhU9ye6Y_1_VDFcGIs",
+    // authDomain: "newemployeedatamanagement.firebaseapp.com",
+    // databaseURL: "https://newemployeedatamanagement.firebaseio.com",
+    // projectId: "newemployeedatamanagement",
+    // storageBucket: "newemployeedatamanagement.appspot.com",
+    // messagingSenderId: "872617319076"
+
+      apiKey: "AIzaSyA5eYKsB8T2q6rMGdKSvac6eQsWTzsZEjE",
+      authDomain: "fir-recent-user.firebaseapp.com",
+      databaseURL: "https://fir-recent-user.firebaseio.com",
+      storageBucket: "fir-recent-user.appspot.com"
+    };
+    firebase.initializeApp(config);
+
+
+        // GLOBAL VARIABLE
+        // Create a variable to reference the database.
+        
+        var database = firebase.database();
+        // Initial Values
+        var name = "";
+        var email = "";
+        var age = 0;
+        var comment = "";
+
+
+        var table = { name: "Roger", role: "enginer", startDate: "3/14/2018", MonthlyRate: "$50", TotalBilles: "110000" };
+
+        // Adding click event listen listener to all buttons
+        $("button").on("click", function () {
+            event.preventDefault();
+            console.log("hello")
+            updateTableObject()
+        });
+
+        function updateTableObject() {
+            
+                event.preventDefault();
+                // Grabbed values from text-boxes
+                name = $("#formGroupExampleInput1").val().trim();
+                email = $("#formGroupExampleInput2").val().trim();
+                age = $("#formGroupExampleInput3").val().trim();
+                comment = $("#formGroupExampleInput4").val().trim();
+                 // Code for "Setting values in the database"
+                database.ref().set({
+                    name: name,
+                    email: email,
+                    age: age,
+                    comment: comment
+            });
+            $("#table1").append('<tr><td>'+name+'</td> <td>'+email+'</td><td>'+age+'</td><td>'+comment+'</td></tr>')
+        }
+        
+
+    </script>
+</body>
+
+
+
+</html>
