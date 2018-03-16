@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    <Header>
+    <div class="container">
+
         <div class="container rounded">
             <div class="jumbotron bg-dark text-light text-center">
                 <h1 class="display-3">Anytime is Train Time</h1>
@@ -22,153 +23,185 @@
                 <hr class="my-2">
             </div>
         </div>
-    </Header>
-    <br>
-    <Main>
 
-        <div class="container border rounded">
-            <div class="panel panel-default bg-primary text-white">Recently Filtered</div>
-            <table id="table1" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Train Name</th>
-                        <th>Destination</th>
-                        <th>Frequency</th>
-                        <th>Next Arrival</th>
-                        <th>Month Away</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Dev</td>
-                        <td>2018</td>
-                        <td>June</td>
-                        <td>$20</td>
-                      
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Dev</td>
-                        <td>2018</td>
-                        <td>June</td>
-                        <td>$20</td>
-                       
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Dev</td>
-                        <td>2018</td>
-                        <td>June</td>
-                        <td>$20</td>
-                        
-                    </tr>
+        <br>
+        <br>
 
-                    <tr>
-                        <td>Mark</td>
-                        <td>Dev</td>
-                        <td>2018</td>
-                        <td>June</td>
-                        <td>$20</td>
-                        
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-lg-12">
+            <div class="container border rounded">
+                <div class="panel-heading">
+                    <h3 class=" panel-title bg-primary text-white">Current Train Schedule</h3>
+                </div>
+                <table id="table1" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Train Name</th>
+                            <th>Destination</th>
+                            <th>Frequency (min)</th>
+                            <th>Next Arrival</th>
+                            <th>Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Dev</td>
+                            <td>2018</td>
+                            <td>June</td>
+                            <td>$20</td>
+
+                        </tr>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Dev</td>
+                            <td>2018</td>
+                            <td>June</td>
+                            <td>$20</td>
+
+                        </tr>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Dev</td>
+                            <td>2018</td>
+                            <td>June</td>
+                            <td>$20</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Mark</td>
+                            <td>Dev</td>
+                            <td>2018</td>
+                            <td>June</td>
+                            <td>$20</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
+
+
+
+        <br>
+        <br>
+
+        <div class="col-lg-12">
+
+            <div class="container border rounded">
+                <h3 class="panel-title bg-primary text-white">Add Train</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Train Name</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Example input">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Destination</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">First Train Time (HH:MN -military times)</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Another input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Frequency (min)</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Another input">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            <br>
+            <br>
+
         </div>
 
-    </Main>
-    <br>
-    <Footer>
-        <div class="container border rounded">
-            <div class="panel-heading bg-primary text-white">Recently Filtered</div>
-            <form>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Train Name</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Example input">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Destination</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">First Train (HH times-military times)</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Another input">
-                </div>
-
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Frequency</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Another input">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </fieldset>
-            </form>
-        </div>
-    </Footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-
-    <script type="text/javascript">
-
-
-// Initialize Firebase
-// Initialize Firebase
-var config = {
-    // apiKey: "AIzaSyCryKfjsF_9YCOVCLhU9ye6Y_1_VDFcGIs",
-    // authDomain: "newemployeedatamanagement.firebaseapp.com",
-    // databaseURL: "https://newemployeedatamanagement.firebaseio.com",
-    // projectId: "newemployeedatamanagement",
-    // storageBucket: "newemployeedatamanagement.appspot.com",
-    // messagingSenderId: "872617319076"
-
-      apiKey: "AIzaSyA5eYKsB8T2q6rMGdKSvac6eQsWTzsZEjE",
-      authDomain: "fir-recent-user.firebaseapp.com",
-      databaseURL: "https://fir-recent-user.firebaseio.com",
-      storageBucket: "fir-recent-user.appspot.com"
-    };
-    firebase.initializeApp(config);
-
-
-        // GLOBAL VARIABLE
-        // Create a variable to reference the database.
         
-        var database = firebase.database();
-        // Initial Values
-        var name = "";
-        var email = "";
-        var age = 0;
-        var comment = "";
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+        <script type="text/javascript">
 
 
-        var table = { name: "Roger", role: "enginer", startDate: "3/14/2018", MonthlyRate: "$50", TotalBilles: "110000" };
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyA4oirPsX96IgHlUaTbQUjx5r5GLzKq4Hk",
+                authDomain: "traintime-85cee.firebaseapp.com",
+                databaseURL: "https://traintime-85cee.firebaseio.com",
+                projectId: "traintime-85cee",
+                storageBucket: "",
+                messagingSenderId: "1066065120803"
+            };
+            firebase.initializeApp(config);
 
-        // Adding click event listen listener to all buttons
-        $("button").on("click", function () {
-            event.preventDefault();
-            console.log("hello")
-            updateTableObject()
-        });
+            // GLOBAL VARIABLE
+            // Create a variable to reference the database.
 
-        function updateTableObject() {
-            
+            var database = firebase.database();
+            // Initial Values
+            var TrainName = "";
+            var Destination = "";
+            var Frequency = 0;
+            var NextArrival = "";
+
+
+            var table = { TrainName: "Roger", Destination: "enginer", Frequency: "3/14/2018", NextArrival: "$50" };
+
+            // Adding click event listen listener to all buttons
+            $("button").on("click", function () {
+                event.preventDefault();
+                console.log("hello")
+                updateTableObject()
+            });
+
+            function updateTableObject() {
+
                 event.preventDefault();
                 // Grabbed values from text-boxes
-                name = $("#formGroupExampleInput1").val().trim();
-                email = $("#formGroupExampleInput2").val().trim();
-                age = $("#formGroupExampleInput3").val().trim();
-                comment = $("#formGroupExampleInput4").val().trim();
-                 // Code for "Setting values in the database"
-                database.ref().set({
-                    name: name,
-                    email: email,
-                    age: age,
-                    comment: comment
-            });
-            $("#table1").append('<tr><td>'+name+'</td> <td>'+email+'</td><td>'+age+'</td><td>'+comment+'</td></tr>')
-        }
-        
+                TrainName = $("#formGroupExampleInput1").val().trim();
+                Destination = $("#formGroupExampleInput2").val().trim();
+                Frequency = $("#formGroupExampleInput3").val().trim();
+                NextArrival = $("#formGroupExampleInput4").val().trim();
+                // Code for "Setting values in the database"
+                // database.ref().set({
+                //     TrainName: TrainName,
+                //     Destination: Destination,
+                //     Frequency: Frequency,
+                //     NextArrival: NextArrival
+                // });
+                // Code in the logic for storing and retrieving the most recent user.
+                database.ref().push({
+                    TrainName: TrainName,
+                    Destination: Destination,
+                    Frequency: Frequency,
+                    NextArrival: NextArrival,
+                    //FirstTrainTime: FirstTrainTime
 
-    </script>
+                });
+
+                $("#table1").append('<tr><td>' + TrainName + '</td> <td>' + Destination + '</td><td>' + Frequency + '</td><td>' + NextArrival + '</td></tr>')
+            }
+
+
+            database.ref().on("child_added", function (snapshot) {
+
+                // var m =snapshot.val().trainName;
+
+                var a = snapshot.val().TrainName
+                var b = snapshot.val().Destination
+                var c = snapshot.val().Frequency
+                var d = snapshot.val().NextArrival
+                //var current = moment("19851031", "YYYYMMDD").fromNow(); // 6 years ago
+
+                console.log(snapshot.val().TrainName, snapshot.val().Destination, snapshot.val().Frequency, snapshot.val().NextArrival)
+                //addrow(a, b, c, d)
+
+            });
+
+        </script>
 </body>
 
 
