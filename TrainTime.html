@@ -110,8 +110,8 @@
                         <label for="formGroupExampleInput2">Frequency (min)</label>
                         <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Another input">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    </fieldset>
+                    <button class="btn btn-primary" id="add-user" type="submit">Submit</button>
+                    <br>
                 </form>
             </div>
             <br>
@@ -119,10 +119,14 @@
 
         </div>
 
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+        <script>
+            // Prints the current day and time in this particular format.
+            console.log(moment().format("DD/MM/YY hh:mm A"));
+        </script>
         <script type="text/javascript">
 
 
@@ -146,15 +150,14 @@
             var Destination = "";
             var Frequency = 0;
             var NextArrival = "";
-
-
-            var table = { TrainName: "Roger", Destination: "enginer", Frequency: "3/14/2018", NextArrival: "$50" };
+            var MinutesAway = "";
 
             // Adding click event listen listener to all buttons
             $("button").on("click", function () {
                 event.preventDefault();
-                console.log("hello")
+                //console.log("hello")
                 updateTableObject()
+
             });
 
             function updateTableObject() {
@@ -165,26 +168,18 @@
                 Destination = $("#formGroupExampleInput2").val().trim();
                 Frequency = $("#formGroupExampleInput3").val().trim();
                 NextArrival = $("#formGroupExampleInput4").val().trim();
-                // Code for "Setting values in the database"
-                // database.ref().set({
-                //     TrainName: TrainName,
-                //     Destination: Destination,
-                //     Frequency: Frequency,
-                //     NextArrival: NextArrival
-                // });
+                MinutesAway = "hello2"
                 // Code in the logic for storing and retrieving the most recent user.
                 database.ref().push({
                     TrainName: TrainName,
                     Destination: Destination,
                     Frequency: Frequency,
                     NextArrival: NextArrival,
-                    //FirstTrainTime: FirstTrainTime
+                    MinutesAway: MinutesAway
 
                 });
 
-                $("#table1").append('<tr><td>' + TrainName + '</td> <td>' + Destination + '</td><td>' + Frequency + '</td><td>' + NextArrival + '</td></tr>')
             }
-
 
             database.ref().on("child_added", function (snapshot) {
 
@@ -192,15 +187,42 @@
 
                 var a = snapshot.val().TrainName
                 var b = snapshot.val().Destination
-                var c = snapshot.val().Frequency
-                var d = snapshot.val().NextArrival
-                //var current = moment("19851031", "YYYYMMDD").fromNow(); // 6 years ago
+                var d = snapshot.val().Frequency
+                var c = snapshot.val().NextArrival
+                var current = moment("19851031", "YYYYMMDD").fromNow(); // 6 years ago
+                MinutesAway = current - NextArrival
+                
 
-                console.log(snapshot.val().TrainName, snapshot.val().Destination, snapshot.val().Frequency, snapshot.val().NextArrival)
-                //addrow(a, b, c, d)
+              var tFrequency = 3;
+    // Time is 3:30 AM
+    var firstTime = "03:30";
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+    // Time apart (remainder)
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
+    // Minute Until Train
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+                
+                var e = snapshot.val().MinutesAway
+
+
+                console.log(snapshot.val().TrainName, snapshot.val().Destination, snapshot.val().Frequency, snapshot.val().NextArrival, snapshot.val().MinutesAway)
+                addrow(a, b, c, d, e)
 
             });
-
+            function addrow(a, b, c, d, e) {
+                $("#table1").append('<tr><td>' + a + '</td> <td>' + b + '</td><td>' + c + '</td><td>' + d + '</td><td>' + e + '</td></tr>')
+            }
         </script>
 </body>
 
